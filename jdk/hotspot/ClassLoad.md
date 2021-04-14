@@ -1,4 +1,4 @@
-
+1
 
 ## 类加载
 
@@ -82,7 +82,31 @@
 ### 类加载器启动流程
 
 ```java
-    
+//"src/hotspot/share/prims/jvm.cpp"
+JVM_ENTRY(jclass, JVM_FindClassFromBootLoader(JNIEnv* env,
+                                              const char* name))
+  JVMWrapper("JVM_FindClassFromBootLoader");
+
+  // Java libraries should ensure that name is never null...
+  if (name == NULL || (int)strlen(name) > Symbol::max_length()) {
+    // It's impossible to create this class;  the name cannot fit
+    // into the constant pool.
+    return NULL;
+  }
+
+  TempNewSymbol h_name = SymbolTable::new_symbol(name, CHECK_NULL);
+  Klass* k = SystemDictionary::resolve_or_null(h_name, CHECK_NULL);
+  if (k == NULL) {
+    return NULL;
+  }
+
+  if (log_is_enabled(Debug, class, resolve)) {
+    trace_class_resolution(k);
+  }
+  return (jclass) JNIHandles::make_local(env, k->java_mirror());
+JVM_END
+
+
     private static final BootClassLoader BOOT_LOADER;
     private static final PlatformClassLoader PLATFORM_LOADER;
     private static final AppClassLoader APP_LOADER;

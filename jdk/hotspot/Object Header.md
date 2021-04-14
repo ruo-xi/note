@@ -600,7 +600,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 偏向锁 14
  * 轻量级锁 145ms
- * 重量级锁 845
+ * 重量级锁 845ms
  */
 public class JolExample4 {
 
