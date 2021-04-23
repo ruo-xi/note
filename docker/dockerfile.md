@@ -2,8 +2,6 @@
 
 两种方式：
 
-
-
 - 更新镜像：使用`docker commit`命令
 
 - 构建镜像：使用`docker build`命令，需要创建Dockerfile文件
@@ -18,8 +16,6 @@
 docker run --name mytomcat -p 80:8080 -d tomcat
 ```
 
-
-
 2.修改容器内容
 
 ```
@@ -30,8 +26,6 @@ echo hello world > index.html
 exit
 ```
 
-
-
 3.提交为新镜像
 
 ```
@@ -39,8 +33,6 @@ docker commit -m="描述消息" -a="作者" 容器ID或容器名 镜像名:TAG
 # 例:
 # docker commit -m="修改了首页" -a="yu" mytomcat huaan/tomcat:v1.0
 ```
-
-
 
 4.使用新镜像运行容器
 
@@ -52,8 +44,6 @@ docker run --name tom -p 8080:8080 -d huaan/tomcat:v1.0
 
 ### 什么是Dockerfile？
 
-
-
 Dockerfile is nothing but the source code for building Docker images
 
 - Docker can build images automatically by reading the instructions from a Dockerfile
@@ -61,8 +51,6 @@ Dockerfile is nothing but the source code for building Docker images
 - A Dockerfile is a **text document** that contains all the commands a user could call on the command line to assemble an image
 
 - - Using **docker build** users can create an automated build that executes several command-line instructions in succession
-
-
 
 ![dockerfile.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/365147/1587017706307-8195b999-d90b-467a-a24f-15969ee89493.jpeg)
 
@@ -89,8 +77,6 @@ Dockerfile is nothing but the source code for building Docker images
 1.把你的springboot项目打包成可执行jar包
 
 2.把jar包上传到Linux服务器
-
-
 
 二、构建
 
@@ -119,8 +105,6 @@ docker build -t huaan/mypro:v1 .
 # -t指定镜像名字和TAG
 # .指当前目录，这里实际上需要一个上下文路径
 ```
-
-
 
 三、运行
 

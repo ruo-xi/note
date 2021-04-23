@@ -58,44 +58,28 @@ Docker命令行工具，用户是用Docker Client与Docker daemon进行通信并
 
 ### 镜像常用操作
 
-
-
 查找镜像：
-
-
 
 ```
 docker search 关键词
 #搜索docker hub网站镜像的详细信息
 ```
 
-
-
 下载镜像：
-
-
 
 ```
 docker pull 镜像名:TAG
 # Tag表示版本，有些镜像的版本显示latest，为最新版本
 ```
 
-
-
 查看镜像：
-
-
 
 ```
 docker images
 # 查看本地所有镜像
 ```
 
-
-
 删除镜像：
-
-
 
 ```
 docker rmi -f 镜像ID或者镜像名:TAG
@@ -103,22 +87,14 @@ docker rmi -f 镜像ID或者镜像名:TAG
 # -f 表示强制删除
 ```
 
-
-
 获取元信息：
-
-
 
 ```
 docker inspect 镜像ID或者镜像名:TAG
 # 获取镜像的元信息，详细信息
 ```
 
-
-
 ### 容器常用操作
-
-
 
 运行：
 
@@ -132,8 +108,6 @@ docker run --name 容器名 -i -t -p 主机端口:容器端口 -d -v 主机目�
 # -v 指定挂载主机目录到容器目录，默认为rw读写模式，ro表示只读
 ```
 
-
-
 容器列表：
 
 ```
@@ -143,23 +117,17 @@ docker ps -a -q
 # -q 只查看容器的ID
 ```
 
-
-
 启动容器：
 
 ```
 docker start 容器ID或容器名
 ```
 
-
-
 停止容器：
 
 ```
 docker stop 容器ID或容器名
 ```
-
-
 
 删除容器：
 
@@ -168,15 +136,11 @@ docker rm -f 容器ID或容器名
 # -f 表示强制删除
 ```
 
-
-
 查看日志：
 
 ```
 docker logs 容器ID或容器名
 ```
-
-
 
 进入正在运行容器：
 
@@ -187,16 +151,12 @@ docker exec -it 容器ID或者容器名 /bin/bash
 # 也可以用docker exec在运行中的容器执行命令
 ```
 
-
-
 拷贝文件：
 
 ```
 docker cp 主机文件路径 容器ID或容器名:容器路径 #主机中文件拷贝到容器中
 docker cp 容器ID或容器名:容器路径 主机文件路径 #容器中文件拷贝到主机中
 ```
-
-
 
 获取容器元信息：
 

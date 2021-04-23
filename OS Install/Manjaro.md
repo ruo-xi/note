@@ -111,4 +111,9 @@ speaker-test
 
 
 
-Q
+### yay completion not work right
+
+```
+rm -rf .cache/yay/completion.cache
+```
+

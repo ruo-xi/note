@@ -1,0 +1,97 @@
+# 编译Spring源代码
+
+### First maybe we can chaeck the spring-framework wiki first and see the build form source chapter
+
+​	[wiki](https://github.com/spring-projects/spring-framework/wiki)
+
+​	[Build from Source](Build from Source)
+
+### 环境
+
+> 操作系统:  Linux yu 5.11.11-arch1-1 #1 SMP PREEMPT Tue, 30 Mar 2021 14:10:17 +0000 x86_64 GNU/Linux
+>
+> Spring版本: spring-framework 5.3.5
+>
+> 源码阅读工具:  Idea 2021.1
+>
+> jdk版本:  openjdk 11.0.10 2021-01-19 OpenJDK Runtime Environment AdoptOpenJDK    (解决oracle-openjdk 找不到jsr的问题)
+>
+> ~~jdk版本:     openjdk 11.0.10 2021-01-19  和 我自己编译的openjdk 11.0.10-internal 2021-01-19~~
+
+**NOTE:我也不知道为什么, 必须要先使用openjdk编译,报错后再换成自己的jdk编译才可以成功,郁闷..**
+
+### 编译过程
+
+* 进入工程目录执行
+
+  `./gradlew :spring-oxm:compileTestJava`
+
+* 将工程导入到Idea中
+
+* 由Gradle 切换为 Idea  build 工程 / 并切换java compiler 的版本
+
+### 报错
+
+* jdk有问题
+
+  ```
+  java: package jdk.jfr does not exist
+  ```
+
+  切换jdk为自己编译的jdk后解决   应该archlinux安装的openjdk的问题
+
+
+* AspectJ 有问题
+
+  ```bash
+  java: cannot find symbol
+    symbol:   class AnnotationBeanConfigurerAspect
+    location: package org.springframework.beans.factory.aspectj
+  ```
+  
+  
+    * 删除spring-aspectJ可以解决问题
+  
+    * 自行下载AspectJ包添加到相关位置
+  
+      1. 安装aspectj	
+  
+         ```bash
+           mkcd lib
+           wget https://ftp.jaist.ac.jp/pub/eclipse/tools/aspectj/aspectj-1.9.6.jar
+         ```
+  
+      2. Add as library to spring-aop.main
+  
+* spring-core
+
+  ```bash
+  Kotlin: Classpath entry points to a non-existent location: pring-framework-5.3.6/spring-core/build/libs/spring-cglib-repack-3.3.0.jar
+  Kotlin: Classpath entry points to a non-existent location: spring-framework-5.3.6/spring-core/build/libs/spring-objenesis-repack-3.2.jar
+  Kotlin: warnings found and -Werror specified
+  Errors occurred while compiling module 'spring.spring-core.main'
+  ```
+
+  解决办法
+
+  ```
+  gradle -> spring -> spring-core -> Tasks -> other -> cglibRepackJar
+  gradle -> spring -> spring-core -> Tasks -> other -> objenesisRepackJar
+  ```
+
+* spring-core
+
+  ```bash
+  java: cannot find symbol
+    symbol:   variable CoroutinesUtils
+    location: class org.springframework.core.ReactiveAdapterRegistry.CoroutinesRegistrar
+  ```
+
+  解决办法
+
+  ```
+  idea   spring-core/kotlin-coroutines/build/libs/*.jar
+  add as library to spring-core.main
+  ```
+
+  
