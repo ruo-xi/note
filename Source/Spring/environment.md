@@ -8,9 +8,9 @@
 
 ### 环境
 
-> 操作系统:  Linux yu 5.11.11-arch1-1 #1 SMP PREEMPT Tue, 30 Mar 2021 14:10:17 +0000 x86_64 GNU/Linux
+> 操作系统:  Linux yu 5.12.10-arch1-1 #1 SMP PREEMPT Thu, 10 Jun 2021 16:34:50 +0000 x86_64 GNU/Linux
 >
-> Spring版本: spring-framework 5.3.5
+> Version: spring-framework 5.3.5
 >
 > 源码阅读工具:  Idea 2021.1
 >

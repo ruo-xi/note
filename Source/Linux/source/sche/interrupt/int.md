@@ -1,5 +1,13 @@
 # Int
 
+Types
+
+* Hardware 
+* System call
+* Custom interrupt
+* signal interrupt
+* System exception and error
+
 ## types
 
 Interrupts can be grouped into two categories based on the source of the interrupt:
@@ -24,7 +32,7 @@ Synchronous interrupts, usually named exceptions, handle conditions detected by 
 
     * **traps**
 
-      a type of exception that is reported **after** the execution of the instruction in which the exception was detected. The saved EIP is the address of the instruction **after** the instuction that caused the trap
+      a type of exception that is reported **after** the execution of the instruction in which the exception was detected. The saved EIP is the address of the instruction **after** the instruction that caused the trap
 
     * **aborts**
 
