@@ -17,6 +17,9 @@
 
 #### 阅读工具
 
+* bear
+  生成**compile_commands.json**文件
+
 * vscode
   * C/C++
   * Java Extension Pack
