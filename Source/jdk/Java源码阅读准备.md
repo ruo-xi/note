@@ -21,8 +21,9 @@
   生成**compile_commands.json**文件
 
 * vscode
-  * C/C++
-  * Java Extension Pack
+  * Plugin
+    * C/C++
+    * Java Extension Pack
 
   * 操作方法
 
